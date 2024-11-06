@@ -19,11 +19,6 @@ public class GameManager : MonoBehaviour
         UpdateScore(0);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
     IEnumerator SpawnTarget()
     {
         while (true)
@@ -34,6 +29,10 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    /// <summary> 
+    /// Updates the current score by adding the specified value and updates the score display text. 
+    /// </summary>
+    /// <param name="scoreToAdd">
     public void UpdateScore(int scoreToAdd) 
     { 
         _score += scoreToAdd; 
