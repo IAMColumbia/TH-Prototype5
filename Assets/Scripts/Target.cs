@@ -12,7 +12,8 @@ public class Target : MonoBehaviour
     private float _maxTorque = 10; 
     private float _xRange = 4; 
     private float _ySpawnPos = -2;
-    
+    public int _pointValue;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -33,7 +34,7 @@ public class Target : MonoBehaviour
     private void OnMouseDown() 
     {
         Destroy(gameObject);
-        _gameManager.UpdateScore(5);
+        _gameManager.UpdateScore(_pointValue);
     }
 
     private void OnTriggerEnter(Collider other) 
