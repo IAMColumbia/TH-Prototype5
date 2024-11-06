@@ -477,6 +477,7 @@ MonoBehaviour:
   - {fileID: 9004646793296381130, guid: 7b9886d4115c13d438d20f297d8ba7c7, type: 3}
   - {fileID: 2336212036656668641, guid: ff314dbc8a880ed40a145ea7071f9e4e, type: 3}
   - {fileID: 4611186195408773434, guid: ff80ed6e892b02347beab63c26d7bce9, type: 3}
+  _scoreText: {fileID: 586588265}
 --- !u!4 &559542613
 Transform:
   m_ObjectHideFlags: 0
