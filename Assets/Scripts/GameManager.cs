@@ -6,8 +6,15 @@ using UnityEngine.SocialPlatforms.Impl;
 
 public class GameManager : MonoBehaviour
 {
-    public List<GameObject> targets;
-    public TextMeshProUGUI _scoreText;
+    [SerializeField]
+    private List<GameObject> targets;
+
+    [SerializeField]
+    private TextMeshProUGUI _scoreText;
+
+    [SerializeField]
+    private TextMeshProUGUI gameOverText;
+
     private int _score;
     private float _spawnRate = 1.0f;
 
@@ -17,6 +24,7 @@ public class GameManager : MonoBehaviour
         StartCoroutine(SpawnTarget());
         _score = 0; 
         UpdateScore(0);
+        gameOverText.gameObject.SetActive(true);
     }
 
     IEnumerator SpawnTarget()
