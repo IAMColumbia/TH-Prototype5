@@ -15,7 +15,7 @@ public class Target : MonoBehaviour
 
     [SerializeField]
     private ParticleSystem _explosionParticle;
-    public int _pointValue;
+    public int PointValue;
 
     /// <summary> 
     /// Initializes the target object's Rigidbody and GameManager component, 
@@ -41,15 +41,21 @@ public class Target : MonoBehaviour
     {
         Destroy(gameObject);
         Instantiate(_explosionParticle, transform.position, _explosionParticle.transform.rotation);
-        _gameManager.UpdateScore(_pointValue);
+        _gameManager.UpdateScore(PointValue);
     }
 
     /// <summary> 
     /// Destroys the object when it fall out of view of the game. 
+    /// Also cotrols the game over text
     /// </summary>
     private void OnTriggerEnter(Collider other) 
     { 
-        Destroy(gameObject); 
+        Destroy(gameObject);
+
+        if (!gameObject.CompareTag("Bad")) 
+        {
+            _gameManager.GameOver();
+        }
     }
 
     Vector3 RandomForce()

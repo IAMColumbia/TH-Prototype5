@@ -24,7 +24,6 @@ public class GameManager : MonoBehaviour
         StartCoroutine(SpawnTarget());
         _score = 0; 
         UpdateScore(0);
-        gameOverText.gameObject.SetActive(true);
     }
 
     IEnumerator SpawnTarget()
@@ -46,4 +45,10 @@ public class GameManager : MonoBehaviour
         _score += scoreToAdd; 
         _scoreText.text = "Score: " + _score; 
     }
+
+    public void GameOver() 
+    { 
+        gameOverText.gameObject.SetActive(true); 
+    }
+
 }
