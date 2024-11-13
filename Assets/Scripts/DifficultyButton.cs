@@ -8,6 +8,9 @@ public class DifficultyButton : MonoBehaviour
     private Button button;
     private GameManager gameManager;
 
+    [SerializeField]
+    private int difficulty;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -26,6 +29,6 @@ public class DifficultyButton : MonoBehaviour
     void SetDifficulty()
     {
         Debug.Log(gameObject.name + " was clicked");
-        gameManager.StartGame();
+        gameManager.StartGame(difficulty);
     }
 }
