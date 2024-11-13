@@ -3,14 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.SocialPlatforms.Impl;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
     [SerializeField]
     private List<GameObject> targets;
 
-    [SerializeField]
-    private TextMeshProUGUI _scoreText;
+    
+    public TextMeshProUGUI _scoreText;
 
     [SerializeField]
     private TextMeshProUGUI gameOverText;
@@ -52,6 +53,11 @@ public class GameManager : MonoBehaviour
     { 
         gameOverText.gameObject.SetActive(true);
         isGameActive = false;
+    }
+
+    public void RestartGame() 
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name); 
     }
 
 }
