@@ -4,17 +4,21 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
     [SerializeField]
     private List<GameObject> targets;
 
-    
-    public TextMeshProUGUI _scoreText;
+    [SerializeField]
+    private TextMeshProUGUI _scoreText;
 
     [SerializeField]
     private TextMeshProUGUI gameOverText;
+
+    [SerializeField]
+    private Button restartButton;
 
     public bool isGameActive;
     private int _score;
@@ -50,7 +54,8 @@ public class GameManager : MonoBehaviour
     }
 
     public void GameOver() 
-    { 
+    {
+        restartButton.gameObject.SetActive(true);
         gameOverText.gameObject.SetActive(true);
         isGameActive = false;
     }
