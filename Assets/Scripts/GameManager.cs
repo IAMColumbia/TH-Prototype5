@@ -20,6 +20,9 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private Button restartButton;
 
+    [SerializeField]
+    private GameObject titleScreen;
+
     public bool isGameActive;
     private int _score;
     private float _spawnRate = 1.0f;
@@ -68,5 +71,6 @@ public class GameManager : MonoBehaviour
         StartCoroutine(SpawnTarget());
         _score = 0;
         UpdateScore(0);
+        titleScreen.gameObject.SetActive(false);
     }
 }
