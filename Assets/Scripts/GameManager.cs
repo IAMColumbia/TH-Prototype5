@@ -15,12 +15,14 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI gameOverText;
 
+    public bool isGameActive;
     private int _score;
     private float _spawnRate = 1.0f;
 
     // Start is called before the first frame update
     void Start()
     {
+        isGameActive = true;
         StartCoroutine(SpawnTarget());
         _score = 0; 
         UpdateScore(0);
@@ -28,7 +30,7 @@ public class GameManager : MonoBehaviour
 
     IEnumerator SpawnTarget()
     {
-        while (true)
+        while (isGameActive)
         {
             yield return new WaitForSeconds(_spawnRate); 
             int index = Random.Range(0, targets.Count); 
@@ -48,7 +50,8 @@ public class GameManager : MonoBehaviour
 
     public void GameOver() 
     { 
-        gameOverText.gameObject.SetActive(true); 
+        gameOverText.gameObject.SetActive(true);
+        isGameActive = false;
     }
 
 }
