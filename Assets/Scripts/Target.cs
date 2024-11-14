@@ -7,13 +7,15 @@ public class Target : MonoBehaviour
 {
     private Rigidbody _targetRb;
     private GameManager _gameManager;
-    private float _minSpeed = 12; 
-    private float _maxSpeed = 16; 
-    private float _maxTorque = 10; 
-    private float _xRange = 4; 
+    private float _minSpeed = 12;
+    private float _maxSpeed = 16;
+    private float _maxTorque = 10;
+    private float _xRange = 4;
     private float _ySpawnPos = -2;
-    public ParticleSystem _explosionParticle;
-    public int _pointValue;
+
+    [SerializeField]
+    private ParticleSystem _explosionParticle;
+    public int PointValue;
 
     /// <summary> 
     /// Initializes the target object's Rigidbody and GameManager component, 
@@ -37,17 +39,27 @@ public class Target : MonoBehaviour
     /// </summary>
     private void OnMouseDown() 
     {
-        Destroy(gameObject);
-        Instantiate(_explosionParticle, transform.position, _explosionParticle.transform.rotation);
-        _gameManager.UpdateScore(_pointValue);
+        if (_gameManager.isGameActive)
+        {
+            Destroy(gameObject);
+            Instantiate(_explosionParticle, transform.position, _explosionParticle.transform.rotation);
+            _gameManager.UpdateScore(PointValue);
+        }
+
     }
 
     /// <summary> 
     /// Destroys the object when it fall out of view of the game. 
+    /// Also cotrols the game over text
     /// </summary>
     private void OnTriggerEnter(Collider other) 
     { 
-        Destroy(gameObject); 
+        Destroy(gameObject);
+
+        if (!gameObject.CompareTag("Bad")) 
+        {
+            _gameManager.GameOver();
+        }
     }
 
     Vector3 RandomForce()
